@@ -14,7 +14,7 @@ data azurerm_key_vault "kv"{
 }
 
 data "azuread_user" "users" {
-  for_each = var.data_experts
+  for_each = toset(var.data_experts)
   user_principal_name = each.key
 }
 
