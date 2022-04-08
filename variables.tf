@@ -17,3 +17,9 @@ variable "resource_group_name" {
   type        = string
   description = "Resource Group Name"
 }
+
+variable "data_experts" {
+  type        = list(string)
+  description = "list of data experts"
+  default     = []
+}
