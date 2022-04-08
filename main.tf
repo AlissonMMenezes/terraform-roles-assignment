@@ -3,6 +3,10 @@ data "azurerm_data_factory" "df" {
   resource_group_name = var.resource_group_name
 }
 
+data "azurerm_resource_group" "rg" {
+  name                = var.resource_group_name
+}
+
 data "azurerm_storage_account" "sa"{
     name                = var.storage_account_name
     resource_group_name = var.resource_group_name
@@ -48,4 +52,10 @@ resource "azuread_group_member" "de" {
   depends_on = [
     azuread_group.de_group
   ]
+}
+
+resource "azurerm_role_assignment" "dx_to_rg" {
+  scope                = data.azurerm_resource_group.rg.id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = azuread_group.de_group.id
 }
