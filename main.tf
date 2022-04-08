@@ -56,6 +56,6 @@ resource "azuread_group_member" "de" {
 
 resource "azurerm_role_assignment" "dx_to_rg" {
   scope                = data.azurerm_resource_group.rg.id
-  role_definition_name = "Storage Blob Data Contributor"
+  role_definition_name = "Contributor"
   principal_id         = azuread_group.de_group.id
 }
