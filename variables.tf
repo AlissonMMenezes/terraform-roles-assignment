@@ -23,3 +23,8 @@ variable "data_experts" {
   description = "list of data experts"
   default     = []
 }
+
+variable "project_name" {
+  type        = string
+  description = "Project name"
+}
